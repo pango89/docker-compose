@@ -1,0 +1,14 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres-local
+    restart: always
+    environment:
+      - POSTGRES_DB=rario
+      - POSTGRES_USER=pguser
+      - POSTGRES_PASSWORD=pgpass
+    ports:
+      - '5432:5432'
+    volumes:
+      - ${HOME}/postgres-data:/var/lib/postgresql
