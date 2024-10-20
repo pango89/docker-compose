@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  neo4j:
+    image: neo4j:latest
+    container_name: neo4j
+    environment:
+      - NEO4J_AUTH=neo4j/neo4jpass   # Set default username and password
+    ports:
+      - "7474:7474"   # HTTP access to Neo4j browser
+      - "7687:7687"   # Bolt protocol for Neo4j drivers
+    volumes:
+      - ${HOME}/neo4j/data:/data          # Persist database data
+      - ${HOME}/neo4j/logs:/logs          # Store logs
+      - ${HOME}/neo4j/import:/var/lib/neo4j/import  # Directory to import data from
+      - ${HOME}/neo4j/plugins:/plugins    # Store any plugins if needed
